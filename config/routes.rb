@@ -1,5 +1,5 @@
 Treebook::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   devise_for :views
   resources :statuses
   root to: 'statuses#index'
