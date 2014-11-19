@@ -1,4 +1,4 @@
-class Sessions::SessionsController < Devise::SessionsController
+class SessionsController < Devise::SessionsController
  before_filter :configure_sign_in_params, only: [:create]
 
    
@@ -15,7 +15,6 @@ class Sessions::SessionsController < Devise::SessionsController
   private
 
   def configure_sign_in_params 
-    devise_parameter_sanitizer.sanitize(:sign_in)
-    #params.require(:user).permit(:email, :password) 
+    params.require(:user).permit(:email, :password) 
   end
 end
