@@ -3,3 +3,9 @@ seth:
   first_name: "Seth"
   last_name: "Reece"
   email: "sethorama@somedumbguy.com"
+
+rock:
+  profile_name: "rockydogs"
+  first_name: "Rocky"
+  last_name: "Dogs"
+  email: "rocky@somedumbguy.com"
