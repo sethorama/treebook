@@ -4,7 +4,7 @@
 
 <%= link_to "Post a New Status", new_status_path, class: "btn btn-succes" %>
 
-<% @statuses.each do |status| %>
+<% @statuses.sort!{|a,b| b.created_at <=> a.created_at }.each do |status| %>
   <div class="status">
     <div class="row">
       <div class="span1">
