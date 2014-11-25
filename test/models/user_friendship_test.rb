@@ -80,11 +80,11 @@ class UserFriendshipTest < ActiveSupport::TestCase
       end
     end
 
-    # should "include the friend in the list of friends" do
-      # @user_friendship.accept!
-      # users(:seth).friends.reload
-      # assert users(:seth).accepted_friends.include?(users(:rocky))
-    # end
+    should "include the friend in the list of friends" do
+      @user_friendship.accept!
+      users(:seth).friends.reload
+      assert users(:seth).accepted_friends.include?(users(:rocky))
+    end
 
     should "accept the mutual friend" do
       @user_friendship.accept!

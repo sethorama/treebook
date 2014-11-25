@@ -47,6 +47,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'simple_form'
 gem 'state_machine'
+gem 'draper'
+gem 'js-routes'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

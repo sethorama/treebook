@@ -42,6 +42,11 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    draper (1.4.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -57,6 +62,9 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    js-routes (0.9.9)
+      railties (>= 3.2)
+      sprockets-rails
     json (1.8.1)
     kgio (2.9.2)
     mail (2.5.4)
@@ -93,6 +101,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.2.19)
@@ -149,9 +158,11 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
+  draper
   factory_girl_rails
   jbuilder (~> 1.2)
   jquery-rails
+  js-routes
   pg
   rails (= 4.0.2)
   rails_12factor
