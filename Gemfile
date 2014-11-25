@@ -7,7 +7,7 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 
 group :test do
-	gem 'shoulda'
+	gem 'shoulda'		
 end
 
 group :production do 
@@ -18,6 +18,7 @@ end
 
 group :development, :test do
 	gem 'sqlite3'
+	gem 'factory_girl_rails'
 end
 
 # Use SCSS for stylesheets
@@ -45,6 +46,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
 gem 'simple_form'
+gem 'state_machine'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

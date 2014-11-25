@@ -13,10 +13,15 @@
 			<div class="container">
 				<a href="#" class="brand">Treebook</a>
 				<ul class="nav">
-					<li><%= link_to "All Statuses", feed_path %></li>
+					<li>
+						<%= link_to "All Statuses", feed_path %>
+					</li>
 				</ul>
 				<ul class="nav pull-right">
 					<% if user_signed_in? %>
+						<li>
+						<%= link_to 'Friends', user_friendships_path %>
+						</li>
 						<li>
 							<%= link_to current_user.full_name, edit_user_registration_path %>
 						</li>
