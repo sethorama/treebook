@@ -10,3 +10,9 @@ rocky:
   first_name: "Rocky"
   last_name: "Dogs"
   email: "rocky@somedumbguy.com"
+
+blocked_friend:
+  first_name: "Blocked"
+  last_name: "Friend"
+  email: "blocked@somedumbguy.com"
+  profile_name: "blocked_friend"

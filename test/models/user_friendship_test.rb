@@ -83,7 +83,7 @@ class UserFriendshipTest < ActiveSupport::TestCase
     should "include the friend in the list of friends" do
       @user_friendship.accept!
       users(:seth).friends.reload
-      assert users(:seth).accepted_friends.include?(users(:rocky))
+      assert users(:seth).friends.include?(users(:rocky))
     end
 
     should "accept the mutual friend" do
@@ -130,6 +130,24 @@ class UserFriendshipTest < ActiveSupport::TestCase
     should "delete the mutual friendship" do
       @friendship1.destroy
       assert !UserFriendship.exists?(@friendship2.id)
+    end
+  end
+
+  context "#block!" do
+    setup do 
+      @user_friendship = UserFriendship.request users(:seth), users(:rocky)
+    end
+
+    should "set the state to blocked" do
+      @user_friendship.block!
+      assert_equal 'blocked', @user_friendship.state
+      assert_equal 'blocked', @user_friendship.mutual_friendship.state
+    end
+
+    should "not allow new requests once blocked" do
+      @user_friendship.block!
+      uf = UserFriendship.request users(:seth), users(:rocky)
+      assert !uf.save
     end
   end
 end
