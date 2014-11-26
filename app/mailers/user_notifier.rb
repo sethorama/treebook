@@ -1,6 +1,16 @@
 class UserNotifier < ActionMailer::Base
   default from: "noreply@treebook.com"
 
+  ActionMailer::Base.smtp_settings = {
+  :port           => ENV['MAILGUN_SMTP_PORT'],
+  :address        => ENV['MAILGUN_SMTP_SERVER'],
+  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  :domain         => 'yourapp.heroku.com',
+  :authentication => :plain,
+}
+ActionMailer::Base.delivery_method = :smtp
+
   def friend_requested(user_friendship_id)
   	user_friendship = UserFriendship.find(user_friendship_id)
 
@@ -21,3 +31,5 @@ class UserNotifier < ActionMailer::Base
   		subject: "#{@friend.full_name} has accepted your friend request"
   end
 end
+
+
