@@ -4,6 +4,7 @@ class UserFriendshipsController < ApplicationController
 
 	def index
 		@user_friendships = current_user.user_friendships.to_a
+		respond_with @user_friendships
 	end
 
 	def accept
@@ -55,8 +56,8 @@ class UserFriendshipsController < ApplicationController
 	end
 
 	def edit
-		@user_friendship = current_user.user_friendships.find(params[:id])
-		@friend = @user_friendship.friend
+		@friend = User.where(profile_name: params[:id]).first
+		@user_friendship = current_user.user_friendships.where(friend_id: @friend.id).first.decorate		
 	end
 
 	def destroy
