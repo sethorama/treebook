@@ -1,8 +1,13 @@
-<h2>Hi <%= @friend.first_name %></h2><br />
+<!DOCTYPE html>
+<html>
+	<body>
+		<h3>Hi <%= @friend.first_name %></h3>
 
-<h3><%= @user.full_name wants to be friends. %></h3><br /><br />
+		<p><%= @user.full_name %> wants to be friends.</p>
 
-<a href="https://sethoramabook.herokuapp.com" class="btn btn-primary">Be Friends</a><br /><br />
+		<p><%= link_to "Treebook", root_path %></p>
 
-Thanks,
-Treebook Team
+		<p>Thanks,
+		Treebook Team</p>
+	</body>
+</html>

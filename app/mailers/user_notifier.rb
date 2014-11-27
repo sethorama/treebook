@@ -7,7 +7,7 @@ class UserNotifier < ActionMailer::Base
   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
   :domain         => 'https://sethoramabook.herokuapp.com',
-  :authentication => :html
+  :authentication => :plain
 }
 ActionMailer::Base.delivery_method = :smtp
 
