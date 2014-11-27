@@ -16,6 +16,7 @@ ActionMailer::Base.delivery_method = :smtp
 
   	@user = user_friendship.user
   	@friend = user_friendship.friend
+    @url = 'https://sethoramabook.herokuapp.com'
 
   	mail to: @friend.email,
   		subject: "#{@user.full_name} want to be friends on Treebook"
