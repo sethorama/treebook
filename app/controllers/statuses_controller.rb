@@ -16,6 +16,7 @@ class StatusesController < ApplicationController
   # GET /statuses/new
   def new
     @status = Status.new
+    @status.build_document
   end
 
   # GET /statuses/1/edit
@@ -75,6 +76,6 @@ class StatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:name, :user_id, :content) if params[:status]
+      params.require(:status).permit(:content, :profile_name, :full_name, :user_id, :first_name, :last_name, document_attributes: [:attachment, :document, :attachment_file_name, :document_fields, :build_document, :remove_attachment, :user_id]) if params[:status]
     end
 end
