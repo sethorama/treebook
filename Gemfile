@@ -19,7 +19,13 @@ end
 group :development, :test do
 	gem 'sqlite3'
 	gem 'factory_girl_rails'
+	gem 'log_buddy'
 end
+
+group :development do
+	gem 'thin'
+end
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -49,6 +55,7 @@ gem 'simple_form'
 gem 'state_machine'
 gem 'draper', '~> 1.0'
 gem 'js-routes'
+gem 'paperclip'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

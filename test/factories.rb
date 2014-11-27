@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :document do
+    
+  end
+
 	factory :user do
 		first_name 'First'
 		last_name 'Last'
