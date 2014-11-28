@@ -43,8 +43,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, styles: {
     large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#"
-  },
-  :default_url => "/assets/:thumb/images.jpg"
+  }
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def self.get_gravatars
