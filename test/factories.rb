@@ -1,4 +1,14 @@
-FactoryGirl.define do  factory :document do
+FactoryGirl.define do  factory :picture do
+    album nil
+user nil
+caption "MyString"
+description "MyText"
+  end
+  factory :album do
+    user nil
+title "MyString"
+  end
+  factory :document do
     
   end
 
