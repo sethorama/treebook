@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :new, :update, :edit, :destroy]
   before_action :find_user
-  before_action :find_album, only: [:show, :edit, :update, :destroy]
+  before_action :find_album, only: [:edit, :update, :destroy]
   before_action :ensure_proper_user, only: [:edit, :new, :create, :update, :destroy]
   before_action :add_breadcrumbs
 
@@ -17,10 +17,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @album }
-    end
+    redirect_to album_pictures_path(params[:id])
   end
 
   def new
@@ -49,8 +46,15 @@ class AlbumsController < ApplicationController
   end
 
   def update
-    @album.update(album_params)
-    respond_with(@album)
+    respond_to do |format|
+      if @album.update_attributes(album_params)
+        format.html { redirect_to album_pictures_path(@album), notice: 'Album was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @album.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

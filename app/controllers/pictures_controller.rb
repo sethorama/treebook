@@ -10,7 +10,7 @@ class PicturesController < ApplicationController
   # respond_to :html
 
   def index
-    @pictures = @album.pictures.all
+    @pictures = @album.pictures.to_a
 
     respond_to do |format|
       format.html # index.html.erb
