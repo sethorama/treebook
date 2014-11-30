@@ -2,6 +2,7 @@ class AlbumsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :new, :update, :edit, :destroy]
   before_action :find_user
   before_action :find_album, only: [:show, :edit, :update, :destroy]
+  before_action :add_breadcrumbs
 
 
   respond_to :html
@@ -30,6 +31,7 @@ class AlbumsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb "Editing Album"
   end
 
   def create
@@ -60,6 +62,12 @@ class AlbumsController < ApplicationController
   end
 
   private
+
+    def add_breadcrumbs
+      add_breadcrumb @user, profile_path(@user)
+      add_breadcrumb "Albums", albums_path
+    end
+
     def find_user
       @user = User.find_by_profile_name(params[:profile_name])
     end
