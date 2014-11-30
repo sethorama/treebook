@@ -1,11 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row">
   <div class="span8 offset2">
+    <%= page_header do %>
       <h1>
+        <%= avatar_profile_link @status.user %>
         <%= @status.user.full_name %>
         <small><%= time_ago_in_words(@status.created_at) + " ago" %></small>
       </h1>
+    <% end %>
 
     <p>
       <%= @status.content %>

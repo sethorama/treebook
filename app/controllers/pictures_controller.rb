@@ -3,6 +3,7 @@ class PicturesController < ApplicationController
   before_action :find_user
   before_action :find_album
   before_action :find_picture, only: [:edit, :update, :show, :destroy]
+  before_action :ensure_proper_user, only: [:edit, :new, :create, :update, :destroy]
   before_action :add_breadcrumbs
   # before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
@@ -55,7 +56,6 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @picture = Picture.find(params[:id])
 
     respond_to do |format|
       if @picture.update_attributes(picture_params)
@@ -83,9 +83,13 @@ class PicturesController < ApplicationController
   end
 
   private
-    # def set_picture
-      # @picture = Picture.find(params[:id])
-    # end
+
+    def ensure_proper_user
+      if current_user != @user
+        flash[:error] = "You don't have permission to do that."
+        redirect_to album_pictures_path
+      end
+    end
 
     def add_breadcrumbs
       add_breadcrumb @user.first_name, profile_path(@user)
