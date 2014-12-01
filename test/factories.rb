@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :picture do
+FactoryGirl.define do  factory :activity do
+    
+  end
+  factory :picture do
     album nil
 user nil
 caption "MyString"

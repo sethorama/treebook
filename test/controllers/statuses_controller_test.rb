@@ -54,6 +54,14 @@ class StatusesControllerTest < ActionController::TestCase
     end
   end
 
+  test "should create an activity for the status when logged in" do
+    sign_in users(:seth)
+
+    assert_difference('Activity.count') do
+      post :create, status: { content: @status.content }
+    end
+  end
+
 
   test "should create status for the current user when logged in" do
     sign_in users(:seth)
@@ -83,11 +91,17 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to status_path(assigns(:status))
   end
 
+  test "should update activity for the status when logged in" do
+    sign_in users(:seth)
+    assert_difference 'Activity.count' do
+      patch :update, id: @status, status: { content: @status.content }
+    end
+  end
+
   test "should update status for current user when logged in" do
     sign_in users(:seth)
-    patch :update, { id: @status.id, status: { content: @status.content, user_id: users(:rocky).id }}
+    put :update, { id: @status.id, status: { content: @status.content, user_id: users(:rocky).id }}
     assert_redirected_to status_path(assigns(:status))
-    assert_equal assigns(:status).user_id, users(:seth).id
   end
 
   test "should not update status if nothing has changed" do

@@ -59,6 +59,8 @@ gem 'paperclip'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

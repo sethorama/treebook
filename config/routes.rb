@@ -1,6 +1,8 @@
 Treebook::Application.routes.draw do
   # devise_for :users, :controllers => { registrations: 'registrations', sessions: 'sessions/sessions' }
+  resources :activities, only: [:index]
 
+  
   as :user do 
     get '/register', to: 'devise/registrations#new', as: :register
     get '/login', to: 'devise/sessions#new', as: :login
