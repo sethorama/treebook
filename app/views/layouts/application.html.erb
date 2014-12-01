@@ -12,16 +12,16 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<% if user_signed_in? %>
-					<%= link_to "Treebook", activities_path, class: 'brand' %>.
+					<%= link_to "Treebook", activities_path, class: 'brand' %>
 				<% else %>
-					<%= link_to "Treebook", root_path, class: 'brand' %>.
+					<%= link_to "Treebook", root_path, class: 'brand' %>
 				<% end %>
 				<ul class="nav">
 					<li>
 						<%= link_to "All Statuses", feed_path %>
 					</li>
 					<% if user_signed_in? %>
-						<li>						
+						<li id="activity-feed">						
 							<%= link_to "Activity Feed", activities_path %>
 						</li>
 					<% end %>
@@ -42,11 +42,11 @@
 						</li>
 					<% else %>
 						<li>
-							<%= link_to "Sign In", login_path %>
-						</li>
-						<li>
 							<%= link_to "Register", register_path %>
 						</li>
+						<li>
+							<%= link_to "Sign In", login_path %>
+						</li>	
 
 					<% end %>
 				</ul>
@@ -68,4 +68,15 @@
 	</div>
 
 </body>
+
+<script id="activities-template" type="text/x-handlebars-template">
+	<a class="dropdown-toggle" href="#">Activity Feed ({{count}})</a>
+	<ul class="dropdown-menu">	
+		{{#each activities}}
+			{{activityLink}}
+		{{/each}}
+		<li class="divider"></li>
+		<li><a href="{{activityFeedLink}}">Activity Feed</a></li>
+	</ul>
+</script>
 </html>
